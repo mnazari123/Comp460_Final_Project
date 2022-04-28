@@ -6,11 +6,13 @@ import java.util.List;
 public class SudokuValueGenerator {
 	
 	int[] mat[];
+	int[] solution[];
 	int N; // number of columns/rows.
 	int SRN; // square root of N
 	int K; // No. Of missing digits
 	List<Integer> numbers = new ArrayList<Integer>();
-
+	List<Integer> answer = new ArrayList<Integer>();
+ 
 	// Constructor
 	SudokuValueGenerator(int N, int K)
 	{
@@ -22,6 +24,7 @@ public class SudokuValueGenerator {
 		SRN = SRNd.intValue();
 
 		mat = new int[N][N];
+		solution = new int[N][N];
 		
 		//getCellValue();
 	}
@@ -34,9 +37,19 @@ public class SudokuValueGenerator {
 
 		// Fill remaining blocks
 		fillRemaining(0, SRN);
-
+		
+		saveSolution();
 		// Remove Randomly K digits to make game
 		removeKDigits();
+	}
+	
+	void saveSolution()
+	{
+		for (int i = 0; i<N; i++)
+		{
+			for (int j = 0; j<N; j++)
+				solution[i][j] = mat[i][j];
+		}
 	}
 
 	// Fill the diagonal SRN number of SRN x SRN matrices
@@ -206,6 +219,15 @@ public class SudokuValueGenerator {
 		return numbers;
 		
 	}
+	public List getSolution(){
+		for (int i = 0; i<N; i++){
+			for (int j = 0; j<N; j++)
+				answer.add(solution[i][j]);
+			
+		}
+		return answer;
+	}
+	
 	
 	
 

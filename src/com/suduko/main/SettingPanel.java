@@ -19,6 +19,7 @@ public class SettingPanel extends JPanel implements ActionListener{
 	JCheckBox checkbox;
 	JProgressBar bar;
 	
+	
 	public SettingPanel() {
 		this.setOpaque(true);
 		this.setBackground(Color.white);
@@ -27,6 +28,7 @@ public class SettingPanel extends JPanel implements ActionListener{
 		
 		hintButton = new JButton("Hint");
 		solutionButton = new JButton("Solve for me");
+		solutionButton.addActionListener(this);
 		
 		this.add(hintButton);
 		this.add(solutionButton);
@@ -54,6 +56,7 @@ public class SettingPanel extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		
 		
 	}
 	public void life_status() {

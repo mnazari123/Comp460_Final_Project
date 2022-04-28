@@ -21,6 +21,7 @@ public class PlayPanel extends JPanel{
 	SudokuValueGenerator myList = new SudokuValueGenerator(N, K);
 	
 	List<Integer> cell_value;
+	List<Integer> answer_value;
 	
 		
 	public PlayPanel() {
@@ -30,8 +31,9 @@ public class PlayPanel extends JPanel{
 		this.setPreferredSize(new Dimension(600, 100));
 		this.setLayout(new GridLayout(9, 9, 5, 5));
 		
+		
 		//backgroundPanels();
-		drawTextFields();
+		drawTextFields(false);
 	}
 	
 	public void BoxData(int s) {
@@ -84,10 +86,10 @@ public class PlayPanel extends JPanel{
 		//drawTextFields(this);
 	}
 	
-	public void drawTextFields() {
+	public void drawTextFields( boolean solve) {
 		myList.fillValues();
+		answer_value = myList.getSolution();
 		cell_value = myList.getCellValue();
-		
 		for(int t = 0; t < 81; t++) {
 			JTextField temp;
 			String ID_KEY = t+"";
@@ -105,17 +107,28 @@ public class PlayPanel extends JPanel{
 			temp.setHorizontalAlignment(0);
 			temp.setForeground(Color.black);
 			temp.addActionListener(new ActionListener() {
-
+			
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					int r = (int) temp.getClientProperty(ID_KEY);
 					int v = Integer.parseInt(temp.getText());
+					int checker = answer_value.get(r);
+					if(v == checker) {
+						temp.setBackground(Color.green);
+					}else {
+						temp.setBackground(Color.RED);
+					}
+					
+					
+					
 					
 				}
 				
 			});
 			this.add(temp);
+			
+			
 			
 		}
 	}
