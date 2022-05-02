@@ -26,11 +26,13 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 
+// Using JFrame to cast the the main frame
 public class SudukoMainFrame extends JFrame implements ActionListener{
 	
-	JMenuBar menuBar;
-	JMenu file, edit, help;
-	JMenuItem loadItem, saveItem, exitItem, timmer_window;
+	
+	JMenuBar menuBar; // Menu Bar
+	JMenu file, edit, help; // Menu
+	JMenuItem loadItem, saveItem, exitItem, timmer_window; // Menu Item
 	
 	public SudukoMainFrame() {
 
@@ -48,9 +50,9 @@ public class SudukoMainFrame extends JFrame implements ActionListener{
 		saveItem = new JMenuItem("Save");
 		exitItem = new JMenuItem("Exit");
 		
-		loadItem.setMnemonic(KeyEvent.VK_L); // l for load
-		saveItem.setMnemonic(KeyEvent.VK_S); // s for save
-		exitItem.setMnemonic(KeyEvent.VK_E); // e for exit
+		loadItem.setMnemonic(KeyEvent.VK_L); // l for load - short cut
+		saveItem.setMnemonic(KeyEvent.VK_S); // s for save - short cut
+		exitItem.setMnemonic(KeyEvent.VK_E); // e for exit - short cut
 		
 		file.add(loadItem);
 		file.add(saveItem);
@@ -66,18 +68,20 @@ public class SudukoMainFrame extends JFrame implements ActionListener{
 		this.setJMenuBar(menuBar);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(850, 600);
-		this.setLocationRelativeTo(null);
-		this.setLayout(new BorderLayout());
+		this.setSize(850, 600); // the window size of 850, 600
+		this.setLocationRelativeTo(null); // Adjusting the window in the middle when it pops up.
+		this.setLayout(new BorderLayout()); // Adjusting the items in the window based on the border of the frame
 
-		this.add(new SettingPanel(), BorderLayout.EAST);
-		this.add(new PlayPanel(), BorderLayout.WEST);
+		this.add(new SettingPanel(), BorderLayout.EAST); // the setting panel on the right. 
+		this.add(new PlayPanel(), BorderLayout.WEST); // the play panel on the left.
 		
 		this.setVisible(true);
 		
 		
 	}
-
+	
+	// Action performed is due to the menu items. 
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		

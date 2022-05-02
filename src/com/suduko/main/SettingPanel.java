@@ -15,6 +15,10 @@ import javax.swing.JProgressBar;
 
 public class SettingPanel extends JPanel implements ActionListener{
 	
+	// There are different components in this part which are not working with items on the play Panel. 
+	// the components which should work for time, difficulty that be adjusted by the user can not work with the components in the next panel.
+	// the same the the button and JCheckBox.
+	
 	JButton hintButton, solutionButton, startGame;
 	JCheckBox checkbox;
 	JProgressBar bar;
